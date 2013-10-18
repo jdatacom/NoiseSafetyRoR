@@ -27,6 +27,15 @@ class ClientsController < ApplicationController
     end
   end
 
+  def destroy
+    @client = Client.find(params[:id])
+    @client.destroy
+
+    flash[:notice] = "Client has been deleted."
+
+    redirect_to clients_path
+  end
+
   def create
 #    @client = Client.new(params[:client])
     @client = Client.new(client_params)
